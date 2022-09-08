@@ -13,5 +13,38 @@ Created on Wed Aug 24 14:35:56 2022
 """
 import pandas as pd
 import numpy as np 
+import matplotlib.pyplot as plt
+import yfinance as yf
+import glob
+import os
+from scipy.optimize import minimize
+import locale
+locale.setlocale( locale.LC_ALL, '' )
+import functions as fn
+import main as mn
 
-data=pd.read_csv('NAFTRAC_20200131.csv')
+#PASIVE
+data=fn.import_files('\\files')
+tickers=fn.ticker(data['Ticker'])
+dates=mn.dates
+
+closing_prices=mn.closing_prices
+prices=mn.prices
+prices1=mn.prices1
+
+pin=mn.pin
+cash=mn.cash
+
+
+
+#ACTIVA
+closes=mn.closes
+yearone=mn.yearone
+
+###port ef###
+w_emv=mn.w_emv
+rsmax=mn.RS_minvar
+frontera=mn.frontera
+yeartwo=mn.yeartwo
+df_op=mn.df_op
+
