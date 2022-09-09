@@ -137,15 +137,15 @@ for j in range(len(dates)-1):
         else:
             c.iloc[j+1,i]=c.iloc[j,i]*(1+0.025)
     df_op.iloc[j+1,1]=round(c.iloc[j+1,:].sum(),0)
-    df_op.iloc[j+1,2]=df_op.iloc[j,1]-df_op.iloc[j+1,1]
-    df_op.iloc[j+1,3]=df_op.iloc[j,3]+round((yeartwo.iloc[j+1,:]*(c.iloc[j,:]-c.iloc[j+1,:]).values).sum(),3)
+    df_op.iloc[j+1,2]=df_op.iloc[j+1,1]-df_op.iloc[j,1]
+    df_op.iloc[j+1,3]=df_op.iloc[j,3]+round((yeartwo.iloc[j+1,:]*(c.iloc[j+1,:]-c.iloc[j,:]).values).sum(),3)
     df_op.iloc[j+1,4]=round(df_op.iloc[j+1,3]*com,3)
     df_op['comision_x_op']=df_op['comision_x_op'].fillna(0)
     df_op['comision_acum']=df_op['comision_x_op'].cumsum()
     df_op['rend']=df_op['cash_acum'].pct_change().fillna(0)
     df_op['rend_acum']=df_op['rend'].cumsum()  
 
-
+casha=round(df_op.iloc[-1,3]-df_op.iloc[-1,5],2)
 #rs
 active_rs=fn.RS(yeartwo,w_emv)
 
@@ -161,3 +161,6 @@ df_medidas.iloc[2,2]=pasive_rs
 df_medidas.iloc[0,3]=df_op.rend.mean()*100
 df_medidas.iloc[1,3]=df_op.rend_acum.mean()*100
 df_medidas.iloc[2,3]=active_rs
+
+yeartwoplot=closes.iloc[250:]
+yeartwoplot=yeartwo.reset_index().set_index('Date')

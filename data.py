@@ -34,6 +34,8 @@ prices1=mn.prices1
 
 pin=mn.pin
 cash=mn.cash
+pasiva=mn.pasiva
+pasive_rs=mn.pasive_rs
 
 
 
@@ -42,9 +44,14 @@ closes=mn.closes
 yearone=mn.yearone
 
 ###port ef###
+Peficiente=mn.Peficiente
 w_emv=mn.w_emv
 rsmax=mn.RS_minvar
 frontera=mn.frontera
 yeartwo=mn.yeartwo
 df_op=mn.df_op
+frontera=mn.frontera
+active_rs=mn.active_rs
+casha=mn.casha
 
+yeartwoplot=mn.yeartwoplot

@@ -17,7 +17,7 @@ from scipy.optimize import minimize
 import locale
 locale.setlocale( locale.LC_ALL, '' )
 import data as dta
-
+import main as mn
 
 
 #prices time series
@@ -29,7 +29,6 @@ def prices_timeseries(data):
     plt.xlabel('Dates',fontsize=18)
     plt.ylabel('Prices MXN',fontsize=18)
     plt.legend(data.columns.values, loc='best')
-    plt.show()
 pasiva_ts=prices_timeseries(dta.prices1)
 
 #subplots del dataframe final
@@ -39,7 +38,7 @@ def pasive_plot(dataframe):
                  subplots=True,
                  figsize=(10,20),
                    color=["#FF9B85","#60D394","#AAF683"]);
-pasiva_suplot=pasive_plot(dta.pasivaplot)
+pasiva_suplot=pasive_plot(mn.pasivaplot)
 
 
 #activa
@@ -54,13 +53,11 @@ fronteraef=frontera_ef(dta.frontera)
 
 
 def rend_active(data):
-    ret=data.iloc[250:].pct_change().dropna()
+    ret=data.pct_change().dropna()
     plt.figure(figsize=(12.2,4.5)) 
     for i in ret.columns.values:
-        plt.hist( ret[i],  label=i, bins = 50)
+        plt.hist( ret[i],  label=i, bins = 22)
     plt.title('Histograma de los retornos')
-    plt.xlabel('Fecha',fontsize=18)
-    plt.ylabel('Precio en USD',fontsize=18)
     #plt.legend(ret.columns.values,loc='best')
     plt.show()
-rend_plot=rend_active(dta.closes)
+rend_plot=rend_active(dta.yeartwoplot)
